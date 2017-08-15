@@ -10,6 +10,7 @@ void create_array(int array[]);
 void insert_at(int index, int value, int array[]);
 void delete_from(int index, int array[]);
 void linear_search(int value, int array[]);
+void binary_search(int value, int array[]);
 
 int main(void)
 {
@@ -23,6 +24,7 @@ int main(void)
     print_array(array);
     value = 5;
     linear_search(value, array);
+    binary_search(value, array);
 }
 
 void print_array(int array[])
@@ -80,13 +82,25 @@ void linear_search(int value, int array[])
         printf("NOT FOUND !\n");
 }
 
-    
+void binary_search(int value, int array[])
+{
+    int start =0, end = size-1, mid;
+        
+    while(start <= end){
+        if(array[mid] < value)
+            start = mid +1;
+        else if(array[mid] == value){
+            printf("FOUND %d AT INDEX: %d\n", value, mid);
+            break;
+        }
+        else
+            end = mid -1;
 
+        mid = (start+end)/2;
+    }
 
+    if(start > end)
+        printf("NOT FOUND !");
 
-
-
-
-
-
+}
 
