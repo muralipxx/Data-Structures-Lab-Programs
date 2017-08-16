@@ -1,34 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void multiply(int a[3][3], int b[3][3], int mult[3][3]);
-void print(int arr[3][3]);
-void transpose(int arr[3][3]);
+#define m 3
+#define n 3
+
+void multiply(int a[m][n], int b[m][n], int mult[m][n]);
+void print(int arr[m][n]);
+void transpose(int arr[m][n]);
+void read_matrix(int a[m][n]);
 
 int main(void)
 {
-    int a[3][3] = {{1,2,3} , {1,2,3}, {1,2,3} };
-    int b[3][3] = {{1,2,3} , {1,2,3}, {1,2,3} };
+    int a[3][3], b[3][3];
+    printf("MATRIX A\n");
+    read_matrix(a);
+    printf("MATRIX B\n");
+    read_matrix(b);
     int mult[3][3];
-
+    printf("MULTIPLICATION:-\n");
     multiply(a, b ,mult);
     print(mult);
     transpose(mult);
-    print(mult);
 
     return 0;
 }
 
-void multiply(int a[3][3], int b[3][3], int mult[3][3])
+void read_matrix(int a[m][n])
+{
+    printf("Input values:\n");
+    int i,j;
+    for(i=0; i<m; i++)
+    {
+        for(j=0; j<n; j++)
+        {
+            scanf("%d",&a[i][j]);
+        }
+    }
+    printf("Done\n");
+}
+
+void multiply(int a[m][n], int b[m][n], int mult[m][n])
 {
     int i,j,k;
 
-    for(i=0; i<3; i++)
+    for(i=0; i<m; i++)
     {
-        for(j=0; j<3; j++)
+        for(j=0; j<n; j++)
         {
             mult[i][j] = 0;
-            for(k=0; k<3; k++)
+            for(k=0; k<n; k++)
             {
                 mult[i][j] += a[i][k]*b[k][j];
             }
@@ -37,12 +57,12 @@ void multiply(int a[3][3], int b[3][3], int mult[3][3])
     }
 }
 
-void print(int arr[3][3])
+void print(int arr[m][n])
 {
     int i,j;
-    for(i=0; i<3; i++)
+    for(i=0; i<m; i++)
     {
-        for(j=0; j<3; j++)
+        for(j=0; j<n; j++)
         {
            printf("%d  ",arr[i][j]);
 
@@ -51,25 +71,26 @@ void print(int arr[3][3])
     }
 }
 
-void transpose(int arr[3][3])
+void transpose(int arr[m][n])
 {
-    int i,j,temp[3][3];
-    for(i=0; i<3; i++)
+    int i,j,temp[m][n];
+    for(i=0; i<m; i++)
     {
-        for(j=0; j<3; j++)
+        for(j=0; j<n; j++)
         {
             temp[j][i] = arr[i][j];
         }
     }
+    printf("Transpose is:\n");
     
-    for(i=0; i<3; i++)
+    for(i=0; i<m; i++)
     {
-        for(j=0; j<3; j++)
+        for(j=0; j<n; j++)
         {
-            arr[i][j] = temp[i][j];
+            printf("%d\t", temp[i][j]);
         }
+        printf("\n");
     }
-    printf("Transpose Complete !!\n");
 }
 
 
