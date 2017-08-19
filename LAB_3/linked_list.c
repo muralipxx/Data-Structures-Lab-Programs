@@ -28,7 +28,8 @@ int main(void)
         printf("2. Insert at end.\n");
         printf("3. Delete from beginning.\n");
         printf("4. Delete from end.\n");
-        printf("5. Print Linked List.\n\n");
+        printf("5. Print Linked List.\n");
+        printf("6. Size of linked list.\n\n");
         printf("ENTER 999 TO END.\n\n");
 
         int n, flag =0;
@@ -48,6 +49,8 @@ int main(void)
             case 4:delete_end();
                    break;
             case 5:display();
+                   break;
+            case 6:printf("Size of list-->%d\n\n",count);
                    break;
             case 999:flag = 1;
                    break;
