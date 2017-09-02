@@ -15,7 +15,8 @@ void insert_end(int);
 void insert_after(int,int);
 void delete_after(int);
 void delete_beginning();        
-void delete_end();            
+void delete_end();
+void insert_n_nodes(int);
 void display();           
 
 
@@ -244,5 +245,60 @@ void delete_after(int value)
     free(postptr);
     printf("Node after %d deleted.\n",value);    
 }
+
+void insert_n_nodes(int nodes){
+
+    struct node* new = NULL;
+
+    if(start == NULL){
+        new = (struct node*)malloc(sizeof(node));
+        printf("Input data for first node: ");
+        scanf(" %d", &new->data);
+        new->link = new;
+        start = new;
+        if(nodes == 1)
+            return;
+    }
+
+    for(int i=0; i<nodes-1; i++){
+        new = (struct node*)malloc(sizeof(node));
+        printf("Insert data: ");
+        scanf(" %d", &new->data);
+        new->link = start;
+        struct node* ptr = start;
+        while(ptr->link != start)
+            ptr = ptr->link;
+        ptr->link = new;
+        start = new;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
