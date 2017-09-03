@@ -9,7 +9,8 @@
 double distance(int,int,int,int);
 
 int main(void){
-    
+
+    //change points as per your needs
     int pts[][2] = {{1,2},{3,5},{4,2},{7,4}};
     int size = sizeof(pts)/sizeof(int);
 

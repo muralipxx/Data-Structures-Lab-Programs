@@ -3,6 +3,7 @@
 
 int main(void){
 
+    //change arrays as per your need but it should be sorted
     int a[] = {1,2,3,7,8};
     int b[] = {0,3,5,6,9,10,11,12};
 
@@ -37,4 +38,5 @@ int main(void){
         printf("%d ", array[i]);
 
     printf("\n");
+
 }
