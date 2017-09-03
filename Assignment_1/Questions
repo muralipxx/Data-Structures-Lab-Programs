@@ -1,0 +1,7 @@
+Q1. Write a program in ‘C’ to merge two sorted arrays of size ‘m’ and ‘n’ in such a way that the resulting array is sorted. Do not sort the resulting array after merging.
+
+Q2. Write a program in ‘C’ to find the closed pair of points from a given set of points.
+
+Q3. Write a program in ‘C’ to display total marks obtained by each of the ten students in a multiple choice question paper containing 10 questions. The options chosen by the student for each of the questions are stored in a two dimensional array. The answer key is stored in a single dimensional array. Each multiple choice question is of 4 marks.
+
+Q4. Write a program in ‘C’ to display information (Employee-id, Name, Address) of ‘n’ employees in ascending order by name.
