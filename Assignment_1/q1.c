@@ -17,18 +17,18 @@ int main(void){
     
     while(index < size) {
 
-        while(a[j] < b[k] && j<m ){
+        while(j<m && a[j] < b[k]){
             array[index] = a[j];
             ++index;
             ++j;
         }
-        while(a[j] > b[k] && k<n){
+        while(k<n && a[j] > b[k] ){
             array[index] = b[k];
-            ++index;
+            ++index;            
             ++k;            
         }
-        while(a[j] == b[k]){
-            array[index] = a[j];
+        while(j<m && k<n && a[j] == b[k]){
+            array[index] = a[j]; 
             j++; index++;            
         }        
     }
