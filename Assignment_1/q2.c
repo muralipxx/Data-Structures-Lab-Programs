@@ -16,7 +16,7 @@ int main(void){
 
     int x1,y1,x2,y2;
     int rows = sizeof(pts)/sizeof(pts[0]);
-    double min = -6969.0;
+    double min = 99999;
     
         
     for(int i=0; i<rows; i++){
@@ -26,7 +26,7 @@ int main(void){
             if(pts[i][0] != pts[j][0] && pts[i][1] != pts[j][1])
             {
                 double dist = distance(pts[i][0], pts[i][1], pts[j][0], pts[j][1]);
-                if(dist >= min){
+                if(dist <= min){
                     min = dist;
                     x1 = pts[i][0];
                     y1 = pts[i][1];
@@ -44,7 +44,7 @@ int main(void){
 
 double distance(int x1, int y1, int x2, int y2){
         
-    return ((x2-x1)^2 + (y2-y1)^2)^(1/2);
+    return sqrt(pow(x2-x1,2) + pow(y2-y1,2));
 }
 
 
