@@ -24,18 +24,15 @@ int main(void){
         while(a[j] > b[k] && k<n){
             array[index] = b[k];
             ++index;
-            ++k;
-            
+            ++k;            
         }
         while(a[j] == b[k]){
             array[index] = a[j];
-            j++; index++;
-            
-        }
-        
+            j++; index++;            
+        }        
     }
    
-    printf("Final array: ");
+    printf("Merged array: ");
     for(int i=0; i<size; i++)
         printf("%d ", array[i]);
 
