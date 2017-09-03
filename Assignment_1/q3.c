@@ -9,10 +9,11 @@ int main(void){
     srand(time(NULL));
 
     int sum;
+    //Change the answer key as per your needs 
     int answer_key[] = {3,1,4,1,2,3,4,2,4,1};
     int answer_sheet[10][10];
     
-    //Filling the answer sheet
+    //Filling the answer sheet randomly
     for(int i=0; i<10; i++)
         for(int j=0; j<10; j++)
             answer_sheet[i][j] = 1 + rand()%4;
@@ -29,11 +30,13 @@ int main(void){
 
 
     }
+    
 //  print(answer_sheet);
 }
 
 
-
+//optional function to print answer sheet of students
+/*
 void print(int array[10][10]){
     for(int i=0; i<10; i++){
         for(int j=0; j<10; j++){
@@ -42,3 +45,4 @@ void print(int array[10][10]){
         printf("\n");
     }
 }
+*/
