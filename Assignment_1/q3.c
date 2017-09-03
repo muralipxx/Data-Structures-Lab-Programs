@@ -20,15 +20,12 @@ int main(void){
 
     //Checking the answer sheet
     printf("\t***Marks***\n");
-    for(int i=0; i<10; i++)
-    {
+    for(int i=0; i<10; i++){
         sum = 0;
         for(int j=0; j<10; j++)
             if(answer_key[j] == answer_sheet[i][j])
                 sum += 4;
         printf("Student %d: %d \n",i+1,sum);
-
-
     }
     
 //  print(answer_sheet);
