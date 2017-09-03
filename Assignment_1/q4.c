@@ -50,7 +50,7 @@ int main(void){
     }
 
     printf("\t***Sorted Order***\n\n");
-    //printing employess by name
+    //printing employees by name
     for(int i=0; i<n; i++){
         printf("Employee ID: ");
         printf(" %d\n", array[i].id);
