@@ -3,34 +3,38 @@
 
 int main(void){
 
-    int a[] = {1,3,5,7,9};
-    int b[] = {0,2,4,6,8,10,11,12};
+    int a[] = {1,2,3,7,8};
+    int b[] = {0,3,5,6,9,10,11,12};
 
     int m =sizeof(a) / sizeof(int);
     int n =sizeof(b) / sizeof(int);
     
-    int j=0, k=0;
+    int index=0, j=0, k=0;
     int size = m + n;
     int array[size];
  
     
-    for(int i=0; i<size; i++){
+    while(index < size) {
 
-        if( a[j] < b[k]){
-            array[i] = a[j];
-            j++;
+        while(a[j] < b[k] && j<m ){
+            array[index] = a[j];
+            ++index;
+            ++j;
         }
-        else if(b[k] < a[j]){
-            array[i] = b[k];
-            k++;
+        while(a[j] > b[k] && k<n){
+            array[index] = b[k];
+            ++index;
+            ++k;
+            
         }
-        else{
-            array[i] = a[j];
-            j++;
+        while(a[j] == b[k]){
+            array[index] = a[j];
+            j++; index++;
+            
         }
-
+        
     }
-
+   
     printf("Final array: ");
     for(int i=0; i<size; i++)
         printf("%d ", array[i]);
