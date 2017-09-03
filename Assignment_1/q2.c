@@ -1,3 +1,7 @@
+/* Better way to do this question is through divied and conquer
+ * algorithm but for simplicity I've done it using basic linear traversing
+ */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
