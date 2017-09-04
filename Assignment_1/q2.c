@@ -11,7 +11,8 @@ double distance(int,int,int,int);
 int main(void){
 
     //change points as per your needs
-    int pts[][2] = {{1,2},{3,5},{4,2},{7,4}};
+    int pts[][2] = {{2, 3}, {12, 30}, {40, 50}, {5, 1}, {12, 10}, {3, 4}};
+//   int pts[][2] = {{1,2},{3,5},{4,2},{7,4}};
     int size = sizeof(pts)/sizeof(int);
 
     int x1,y1,x2,y2;
