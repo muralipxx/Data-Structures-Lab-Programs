@@ -61,7 +61,6 @@ void pop(){
         return;
     }
 
-    stack[top+1] = 9999;
     top--;
     size--;
     printf("Popped!\n\n");
