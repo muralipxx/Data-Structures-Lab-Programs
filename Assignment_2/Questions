@@ -1,0 +1,9 @@
+1. Write a ‘C’ routine reverse(start) to reverse a singly linked list.
+
+2. Write a ‘C’ routine insertlist(start1,pos1,start2,pos2,n) to insert ‘n’ elements of a singly
+   linked list ( having starting node address as start2) beginning from position pos2 into 
+   another singly linked list (having starting node address as start1) beginning from position
+   pos1.
+
+3. Write a ‘C’ routine concatenate(start1,start2) to concatenate two doubly linked list having
+   starting address as start1 and start2.
