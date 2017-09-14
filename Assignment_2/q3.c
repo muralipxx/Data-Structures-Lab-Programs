@@ -16,7 +16,7 @@ struct node* insert_beginning(struct node* start ,int);
 void insert_after(int, int);        
 void delete_end();            
 void display(struct node* start);           
-void concatinate();
+void concat(struct node*, struct node*);
 
 int main(void)
 {
@@ -27,7 +27,7 @@ int main(void)
     while(n != 5){
         printf("1. Insert start1.\n");
         printf("2. Insert start2.\n");
-        printf("3. Concatinate.\n");
+        printf("3. Concatenate.\n");
         printf("4. Display.\n");
         printf("5. Exit.\n\n");
 
@@ -42,7 +42,7 @@ int main(void)
                    scanf(" %d",&value);
                    start2 = insert_beginning(start2, value);
                    break;
-            case 3:concatinate(start1, start2);
+            case 3:concat(start1, start2);
                    break;
             case 4:printf("Display 1 or 2 ? ");
                    scanf(" %d",&value);
@@ -61,7 +61,7 @@ int main(void)
     
 }
 
-void concatinate(struct node* s1, struct node* s2){
+void concat(struct node* s1, struct node* s2){
 
     struct node* ptr = NULL;
     ptr = s1;
@@ -69,9 +69,9 @@ void concatinate(struct node* s1, struct node* s2){
         ptr = ptr->link;
 
     ptr->link = s2;
-    s1->prev = ptr;
-
-    printf("Concatinated.\n\n");
+    s2->prev = ptr;
+   
+    printf("Concatenated.\n\n");
 }
     
 /*
