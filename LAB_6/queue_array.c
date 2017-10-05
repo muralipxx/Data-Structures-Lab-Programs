@@ -109,7 +109,7 @@ int main(void){
                     break;
             case 4: display(queue);
                     break;
-            case 99:printf("Bye!!");
+            case 99:printf("Bye!!\n");
                     break;
             default:printf("###Enter a valid input###");
                     break;
