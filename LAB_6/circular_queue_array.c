@@ -37,20 +37,20 @@ struct Queue* createQueue(){
 
 void enqueue(struct Queue* queue, int value){
     
-    if(queue->rear == queue->capacity-1){
+    if(queue->front == queue->rear + 1){
         printf("Overflow\n");
         return;
     }
 
     if(queue->front == -1 && queue->rear == -1){
         queue->front = queue->rear = 0;
-        queue->array[queue->rear] = value;
-        return;
+        queue->array[queue->front] = value;
     }
-
-    queue->rear++;
-    queue->array[queue->rear] = value;
-    
+    else{
+     queue->rear = (queue->rear + 1)%queue->capacity;
+     queue->array[queue->rear] = value;
+    }
+ 
 }
 
 void dequeue(struct Queue* queue){
@@ -60,11 +60,12 @@ void dequeue(struct Queue* queue){
         return;
     }
 
-    if(queue->front == queue->rear)
+    if(queue->front == queue->rear){
         queue->front = queue->rear = -1;
+    }
     else
-        queue->front++;
-
+        queue->front = (queue->front + 1) % queue->capacity;
+        
 }
 
 void display(struct Queue* queue){
@@ -74,10 +75,21 @@ void display(struct Queue* queue){
         return;
     }
 
-    for(int i=queue->front; i<=queue->rear; i++)
-        printf("%d ",queue->array[i]);
+    if(queue->rear >= queue->front){
+        for(int i=queue->front; i<=queue->rear; i++)
+            printf("%d ",queue->array[i]);
+    }
+    else
+    {
+        for(int i= queue->front; i<queue->capacity; i++)
+            printf("%d ",queue->array[i]);
 
-    printf("\nDone!!\n");
+        for(int i=0; i<=queue->rear; i++)
+            printf("%d ",queue->array[i]);
+    }
+
+    printf("\nFRONT-->%d\nREAR-->%d\n",queue->front, queue->rear);
+    
     }
 
 
