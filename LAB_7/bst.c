@@ -7,7 +7,6 @@ struct Node{
 };
 
 struct Node* root = NULL;
-struct Node* trav = NULL;
 
 struct Node* newNode(int value){
     struct Node* node = (struct Node*)malloc(sizeof(struct Node*));
@@ -20,28 +19,20 @@ struct Node* newNode(int value){
     node->left = node->right = NULL;
 
     return node;
-
 }
 
-void createTree(struct Node* trav, int value){
+struct Node* insert(struct Node* root, int data){
 
-    struct Node* node = newNode(value);
+    struct Node* node = newNode(data);
     if(!root){
         root = node;
-        return;
     }
-
-    if(trav->left == NULL && trav->data > value)
-        trav->left = node;
-    else if(trav->right == NULL && trav->data < value)
-        trav->right = node;
+    else if(data <= root->data)
+        root->left = insert(root->left, data);
     else
-    {
-        if(trav->data < value)
-            createTree(trav->right, value);
-        else
-            createTree(trav->left, value);
-    }
+        root->right = insert(root->right, data);
+    
+    return root;
 }
 
 int input(){
@@ -89,7 +80,7 @@ int main(void){
         scanf(" %d", &option);
         switch(option){
             case 1: value = input();
-                    createTree(root, value);
+                    root = insert(value);
                     break;
             case 2: Preorder(root);
                     printf("\n");
