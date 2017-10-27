@@ -35,6 +35,17 @@ struct Node* insert(struct Node* root, int data){
     return root;
 }
 
+void search(struct Node* root, int data){
+    if(root == NULL)
+        printf("NOT FOUND.\n");
+    else if(root->data == data)
+        printf("FOUND.\n");
+    else if(data <= root->data)
+        search(root->left , data);
+    else
+        search(root->right, data);
+}
+
 int input(){
     int value;
     printf("Enter Value:");
@@ -80,7 +91,7 @@ int main(void){
         scanf(" %d", &option);
         switch(option){
             case 1: value = input();
-                    root = insert(value);
+                    root = insert(root, value);
                     break;
             case 2: Preorder(root);
                     printf("\n");
