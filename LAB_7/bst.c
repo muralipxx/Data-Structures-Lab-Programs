@@ -6,6 +6,7 @@ struct Node{
     struct Node *left, *right;
 };
 
+struct Node* search(struct Node* root, int x);
 struct Node* root = NULL;
 
 struct Node* newNode(int value){
@@ -35,11 +36,59 @@ struct Node* insert(struct Node* root, int data){
     return root;
 }
 
-void search(struct Node* root, int data){
+struct Node* minValueNode(struct Node* root){
+    struct Node* trav = root;
+
+    while(trav->left != NULL)
+        trav = trav->left;
+
+    return trav;
+}
+
+struct Node* deleteNode(struct Node* root, int data){
+    if(!root)
+        return root;
+
+    if(data < root->data)
+        root->left = deleteNode(root->left, data);
+    else if(data > root->data)
+        root->right = deleteNode(root->right, data);
+    else{
+        if(root->left == NULL){
+            struct Node* temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if(root->right == NULL){
+            struct Node* temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        struct Node* temp = minValueNode(root->right);
+
+        root->data = temp->data;
+
+        root->right = deleteNode(root->right, data);
+
+    }
+
+    return root;
+
+}
+
+void smallerThanX(struct Node* root, int x){
+    
+
+
+}
+
+
+struct Node* search(struct Node* root, int data){
     if(root == NULL)
-        printf("NOT FOUND.\n");
+        return NULL;
     else if(root->data == data)
-        printf("FOUND.\n");
+        return root;
     else if(data <= root->data)
         search(root->left , data);
     else
@@ -66,6 +115,7 @@ void Inorder(struct Node* root){
     if(root == NULL)
         return;
     Inorder(root->left);
+    //return root->data;
     printf("%d ", root->data);
     Inorder(root->right);
 }
@@ -83,9 +133,11 @@ int main(void){
     int option, value;
     while(option != 99){
         printf("1. Insert.\n");
-        printf("2. Preorder.\n");
-        printf("3. Inorder.\n");
-        printf("4. Postorder.\n");
+        printf("2. Delete.\n");
+        printf("3. Preorder.\n");
+        printf("4. Inorder.\n");
+        printf("5. Postorder.\n");
+        printf("6. Smaller Than.\n");
         printf("99. Exit\n\n");
         printf("OPTION->");
         scanf(" %d", &option);
@@ -93,25 +145,26 @@ int main(void){
             case 1: value = input();
                     root = insert(root, value);
                     break;
-            case 2: Preorder(root);
-                    printf("\n");
-                    break;
-            case 3: Inorder(root);
-                    printf("\n");
-                    break;
-            case 4: Postorder(root);
-                    printf("\n");
-                    break;
+            case 2: value = input();
 
+                    break;
+            case 3: Preorder(root);
+                    printf("\n");
+                    break;
+            case 4: Inorder(root);
+                    printf("\n");
+                    break;
+            case 5: Postorder(root);
+                    printf("\n");
+                    break;
+            case 6: value = input();
+                    smallerThanX(root, value);
+                    break;
+                    
         }
     }
 }
-
-        
-    
-
-
-        
+      
     
 
 
