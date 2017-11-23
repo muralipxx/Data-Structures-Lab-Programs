@@ -253,7 +253,86 @@ int lessThanN(struct BstNode* root, int N){
     else
         return lessThanN(root->right, N);
 }
-    
+
+//Delete a Node
+struct BstNode* FindMin(struct BstNode* root)
+{
+	while(root->left != NULL) root = root->left;
+	return root;
+}
+
+struct BstNode* Delete(struct BstNode *root, int data) {
+	if(root == NULL) return root; 
+	else if(data < root->data) root->left = Delete(root->left,data);
+	else if (data > root->data) root->right = Delete(root->right,data);
+	// Wohoo... I found you, Get ready to be deleted	
+	else {
+		// Case 1:  No child
+		if(root->left == NULL && root->right == NULL) { 
+			free(root);
+			root = NULL;
+		}
+		//Case 2: One child 
+		else if(root->left == NULL) {
+			struct BstNode *temp = root;
+			root = root->right;
+			free(temp);
+		}
+		else if(root->right == NULL) {
+			struct BstNode *temp = root;
+			root = root->left;
+			free(temp);
+		}
+		// case 3: 2 children
+		else { 
+			struct BstNode *temp = FindMin(root->right);
+			root->data = temp->data;
+			root->right = Delete(root->right,temp->data);
+		}
+	}
+	return root;
+}
+
+//Find inorder successor
+
+struct BstNode* Find(struct BstNode* root, int data){
+    if(root == NULL)
+        return NULL;
+    else if(root->data == data)
+        return root;
+    else if(root->data < data)
+        return Find(root->right, data);
+    else
+        return Find(root->left, data);
+}
+
+
+struct BstNode* Getsuccessor(struct BstNode* root, int data){
+    //Search the Node - O(h)
+    struct BstNode* current = Find(root, data);
+    if(current == NULL)
+        return NULL;
+    //Case 1: Node has right sub-tree
+    if(current->right != NULL){
+        return FindMin(current->right);
+    }
+    //Case 2:No right subtree
+    else{
+        struct BstNode* successor = NULL;
+        struct BstNode* ancestor = root;
+        while(ancestor != current){
+            if(current->data < ancestor->data){
+                successor = ancestor;
+                ancestor = ancestor->left;
+            }
+            else
+                ancestor = ancestor->right;
+        }
+        return successor;
+    }
+}
+
+
 
 int main(void){
 
